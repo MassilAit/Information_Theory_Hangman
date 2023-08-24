@@ -8,24 +8,18 @@ When the bot guesses a letter, it retrieves information about the player's word.
 
 
 The unit used to calculate the information is the bit. If an observation halves the space of possibilities, we say it gives us 1 bit of information; if it divides the space of possibilities into 4, it gives us 2 bits of information. More generally, the formula for determining the amount of information obtained by an observation is :
-$$
-I=-\log_2(p)
-$$
+$$I=-\log_2(p)$$
 Where $p$ represents the probability of obtaining this observation.
 
 We can quantify the average information from a guess using the expected value of information from a guess:
-$$
-    E[I]=\sum{-p(x)\cdot \log_2(p(x)) }
-$$
+$$E[I]=\sum{-p(x)\cdot \log_2(p(x)) }$$
 This formula is called entropy. It's a measure of the average information we'll get guessing a letter.
 
 ## Algorithm used
 We use a database of the 30000 most common words used in English as the set of possible words. Initially, the player is asked to enter the size of his word, and only words of the right size are kept.
 
 The program will then calculate the entropy, that is, the average amount of information obtained by guessing this letter, for each letter. Let's imagine we want to calculate the entropy of the letter e. The program will consider all possible cases of guessing the letter e. Let's imagine that the player's word contains 5 letters, all possible cases are no letter e, 1 time the letter e at the beginning, 1 time the letter e as the second letter, and so on. In this way, the program determines all possible combinations. Generally speaking, there are:
-$$
-      n_{combinations}=\sum_{i=0}^{m} {m \choose i}
-$$
+$$n_{combinations}=\sum_{i=0}^{m} {m \choose i}$$
 where m is the lenght of the word and $n_{combinations}$ is the number of combinations. 
 
 The probability of each case is calculated by dividing the number of matching words by the total number of words, and then calculating the entropy associated with that guess. The program finally guesses the letter with the highest entropy, that is, the letter that gives us the most information on average.
