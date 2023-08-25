@@ -6,7 +6,6 @@ The algorithm used to guess the player's word is based on a fundamental concept 
 
 When the bot guesses a letter, it retrieves information about the player's word. For example, if the bot guesses the letter e and the player tells us that his word starts with the letter e and has no other e in the rest of the word, we eliminate from our list any words that don't match this result. We can calculate the probability of obtaining this result by dividing the number of words that match it by the total number of words. 
 
-
 The unit used to calculate the information is the bit. If an observation halves the space of possibilities, we say it gives us 1 bit of information; if it divides the space of possibilities into 4, it gives us 2 bits of information. More generally, the formula for determining the amount of information obtained by an observation is :
 $$I=-\log_2(p)$$
 Where $p$ represents the probability of obtaining this observation.
